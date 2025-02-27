@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Places page</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Is empty</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="place,index : ${placeList}">
+        <th th:text="${index.count}"></th>
+        <td th:text="${place.getName()}"></td>
+        <td th:text="${place.isEmpty()}"></td>
+    </tr>
+    </tbody>
+</table>
+<form th:action="@{/place/create/{floorId}(floorId=${floorId})}" th:method="GET">
+    <button type="submit">Add place</button>
+</form>
+<a th:href="@{/floor/{parkId}(parkId=${parkId})}"><button>Back</button></a>
+
+</body>
+</html>

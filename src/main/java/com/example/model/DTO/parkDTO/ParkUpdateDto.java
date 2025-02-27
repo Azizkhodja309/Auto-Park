@@ -1,4 +1,4 @@
-package com.example.model.entity.base;
+package com.example.model.DTO.parkDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,8 +7,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class IdEntity {
-    private Long id;
+@NoArgsConstructor
+public class ParkUpdateDto {
+    Long id;
+    String name;
 }

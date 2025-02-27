@@ -1,4 +1,4 @@
-package com.example.model.entity.base;
+package com.example.model.DTO.floorDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,8 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class IdEntity {
+public class FloorDTO {
     private Long id;
+    private String name;
 }

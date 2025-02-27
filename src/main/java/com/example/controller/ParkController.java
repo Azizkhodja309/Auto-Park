@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.model.DTO.parkDTO.ParkUpdateDto;
 import com.example.model.entity.AutoPark;
 import com.example.model.DTO.parkDTO.ParkCreateDto;
 import com.example.service.AutoParkService;
@@ -20,10 +21,10 @@ public class ParkController {
         this.autoParkService = autoParkService;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public String park(Model model){
         List<AutoPark> parkList = autoParkService.getAll();
-        parkList.sort(Comparator.comparing(AutoPark::getId).reversed());
+        parkList.sort(Comparator.comparing(AutoPark::getId));
         model.addAttribute("parkList", parkList);
 
         return "park/parks";
@@ -37,6 +38,18 @@ public class ParkController {
     @PostMapping("/create")
     public String create(@ModelAttribute ParkCreateDto parkDto) {
         autoParkService.create(parkDto);
+        return "redirect:/park";
+    }
+
+    @PostMapping("/update")
+    public String update(@ModelAttribute ParkUpdateDto parkDto) {
+        autoParkService.update(parkDto);
+        return "redirect:/park";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String delete(@PathVariable Long id) {
+        autoParkService.delete(id);
         return "redirect:/park";
     }
 }

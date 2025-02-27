@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Floors page</title>
 </head>
 <body>
+    <a href="/park"><button>Back</button></a>
+    <table>
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="floor, index : ${floors}">
+            <td th:text="${index.count}"></td>
+            <td th:text="${floor.getName()}"></td>
+            <td>
+                <form th:action="@{/place/{floorId}(floorId=${floor.id})}">
+                    <input type="hidden" th:name="parkId" th:value="${parkId}">
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-edit"></i>Show places</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 
+    <form th:action="@{/floor/create}" method="GET">
+        <input type="hidden" th:id="id" th:name="parkId" th:value="${parkId}">
+        <button type="submit">Add floor</button>
+    </form>
 </body>
 </html>
