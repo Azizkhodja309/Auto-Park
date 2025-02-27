@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Park page</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="park : ${parkList}">
+        <th th:text="${park.id}"></th>
+        <th th:text="${park.name}"></th>
+    </tr>
+    </tbody>
+    <a th:href="@{/park/create}"><button>Add</button></a>
+</table>
+</body>
+</html>
